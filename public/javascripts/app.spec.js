@@ -4,7 +4,7 @@ describe("testing_app app.js file", function(){
 	var $q, $state, $stateParams, $templateCache, $location, $rootScope, $injector;
 
 	function mockTemplate(templateRoute, template){
-		$templateCache.put(templateRoute,template || templateRoute);
+		$templateCache.put(templateRoute, template || templateRoute);
 	}
 
 	function goFrom(url){
@@ -24,10 +24,10 @@ describe("testing_app app.js file", function(){
 
 	beforeEach(angular.mock.module("testing_app"));
 
-	beforeEach(inject(function(_$q_, _$state_, _$stateParams_, _$templateCache_, _$location_, _$rootScope_, _$injector_){
+	beforeEach(inject(function(_$q_, _$stateParams_, _$state_, _$templateCache_, _$location_, _$rootScope_, _$injector_){
 		$q = _$q_;
-		$state = _$state_;
 		$stateParams = _$stateParams_;
+		$state = _$state_;
 		$templateCache = _$templateCache_;
 	    $location = _$location_;
 	    $rootScope = _$rootScope_;
