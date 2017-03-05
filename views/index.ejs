@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<title><%= title %></title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+	<!--angular and ui-router-->
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.18/angular-ui-router.js"></script>
+
+	<!--our angular app-->
+
+	<link rel="stylesheet" href="/stylesheets/style.css" />
+	<script src="/javascripts/app.js"></script>
+  </head>
+  <body>
+    <h1>Title</h1>
+    <p>Welcome to the paragraph</p>
+
+    <div ui-view>Hello World</div>
+  </body>
+</html>
