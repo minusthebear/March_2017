@@ -22,6 +22,11 @@
     		url: "/home",
     		templateUrl: "templates/home.html"
     	})
+    	.state("users", {
+    		url: "/users",
+    		templateUrl: "templates/users.html",
+    		controller: "UsersController"
+    	})
     	.state("404", {
     		templateUrl: "templates/404.html"
     	});
