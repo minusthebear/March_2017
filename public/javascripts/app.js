@@ -5,10 +5,7 @@
     "ui.router"
   ])
   .config(function($urlRouterProvider, $locationProvider, $stateProvider) {
-    $locationProvider.html5Mode({
-    	enabled: true,
-    	requireBase: false
-    });
+    $locationProvider.html5Mode(true);
 
     $urlRouterProvider
     	.when("", "/home")
@@ -25,7 +22,7 @@
     	.state("users", {
     		url: "/users",
     		templateUrl: "templates/users.html",
-    		controller: "UsersController"
+    		controller: "UsersController as uc"
     	})
     	.state("404", {
     		templateUrl: "templates/404.html"

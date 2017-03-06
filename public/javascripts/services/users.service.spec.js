@@ -2,15 +2,9 @@ describe("Users Factory", function(){
 	var UsersService;
 
 	var userList = [
-		{
-			id: 1, name: "Richard Hendricks", email: "richard@piedpiper.com", phone: 4085550011
-		},
-		{
-			id: 2, name: "Erlich Bachman", email: "erlich@aviato.com", phone: 4155552233
-		},
-		{
-			id: 3, name: "Gavin Belson", email: "gavin@hooli.com", phone: 9165554455
-		}
+		{ id: 1, name: "Richard Hendricks", email: "richard@piedpiper.com", phone: 4085550011 },
+		{ id: 2, name: "Erlich Bachman", email: "erlich@aviato.com", phone: 4155552233 },
+		{ id: 3, name: "Gavin Belson", email: "gavin@hooli.com", phone: 9165554455 }
 	];
 
 	var singleUser = { id: 2, name: "Erlich Bachman", email: "erlich@aviato.com", phone: 4155552233 };
