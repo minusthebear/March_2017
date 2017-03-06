@@ -45,7 +45,6 @@ describe("Users Factory", function(){
 		});
 
 		it("should return the userlist", function(){
-			console.log(userList);
 			expect(UsersService.all()).toEqual(userList);
 		});
 	});
@@ -57,6 +56,10 @@ describe("Users Factory", function(){
 
 		it("should retrieve a user with the id of 2", function(){
 			expect(UsersService.findById(2)).toEqual(singleUser);
+		});
+
+		it("should return an unknown user number as undefined", function(){
+			expect(UsersService.findById(666)).not.toBeDefined();
 		});
 	});
 });

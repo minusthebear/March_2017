@@ -16,8 +16,8 @@ module.exports = function(config) {
         './node_modules/angular-mocks/angular-mocks.js', 
         './public/javascripts/app.js',
         './public/javascripts/app.spec.js',
-        './public/javascripts/services/users.js',
-        './public/javascripts/services/users.spec.js'
+        './public/javascripts/services/users.service.js',
+        './public/javascripts/services/users.service.spec.js'
     ],
     // list of files to exclude
     exclude: [
@@ -29,7 +29,7 @@ module.exports = function(config) {
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress'],
+    reporters: ['spec'],
     // web server port
     port: 9876,
     // enable / disable colors in the output (reporters and logs)
