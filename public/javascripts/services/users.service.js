@@ -1,6 +1,9 @@
 (function(){
+	"use strict";
+
 	angular.module("testing_app")
 		.factory("UsersService", function(){
+
 			var Users = {};
 
 			var userList = [

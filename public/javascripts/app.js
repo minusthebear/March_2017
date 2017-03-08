@@ -4,8 +4,9 @@
   angular.module("testing_app", [
     "ui.router"
   ])
-  .config(function($urlRouterProvider, $locationProvider, $stateProvider) {
+  .config(function($urlRouterProvider, $locationProvider, $stateProvider, $qProvider) {
     $locationProvider.html5Mode(true);
+    $qProvider.errorOnUnhandledRejections(false);
 
     $urlRouterProvider
     	.when("", "/home")

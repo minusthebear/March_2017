@@ -19,7 +19,10 @@ module.exports = function(config) {
         './public/javascripts/services/users.service.js',
         './public/javascripts/services/users.service.spec.js',
         './public/javascripts/controllers/users.controller.js',
-        './public/javascripts/controllers/users.controller.spec.js'
+        './public/javascripts/controllers/users.controller.spec.js',
+        './public/javascripts/services/image.service.js',
+        './public/javascripts/services/image.service.spec.js'
+
     ],
     // list of files to exclude
     exclude: [
