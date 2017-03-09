@@ -59,10 +59,10 @@ describe("profile.controller", function(){
 			$httpBackend.flush();
 
 			expect(ImageService.findByName).toHaveBeenCalledWith("celebi");
-			//expect(ProfileController.user.pokemon.id).toEqual(251);
-			//expect(ProfileController.user.pokemon.name).toEqual("celebi");
-			//expect(ProfileController.user.pokemon.image).toContain(".png");
-			//expect(ProfileController.user.pokemon.type).toEqual("grass");
+			expect(ProfileController.user.pokemon.id).toEqual(251);
+			expect(ProfileController.user.pokemon.name).toEqual("celebi");
+			expect(ProfileController.user.pokemon.image).toContain(".png");
+			expect(ProfileController.user.pokemon.type).toEqual("grass");
 		});
 	});
 });
