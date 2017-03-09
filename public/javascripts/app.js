@@ -25,6 +25,16 @@
     		templateUrl: "templates/users.html",
     		controller: "UsersController as uc"
     	})
+      .state("profile", {
+        url: "/user/:id",
+        templateUrl: "templates/profile.html",
+        controller: "ProfileController as pc",
+        resolve: {
+          resolvedUser: function(UsersService, $stateParams){
+            return UsersService.findById($stateParams.id);
+          }
+        }
+      })
     	.state("404", {
     		templateUrl: "templates/404.html"
     	});

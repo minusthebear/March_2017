@@ -2,7 +2,7 @@
 	"use strict";
 
 	angular.module("testing_app")
-		.factory("imageService", function($http){
+		.factory("ImageService", function($http){
 			var pokemonAPI = "http://pokeapi.co/api/v2/pokemon/";
 			var image = {};
 

@@ -1,5 +1,5 @@
 describe("imageService", function(){
-	var imageService, $q, $httpBackend,
+	var ImageService, $q, $httpBackend,
 		API = "http://pokeapi.co/api/v2/pokemon/";
 
 	var RESPONSE_SUCCESS = {
@@ -19,21 +19,21 @@ describe("imageService", function(){
 
 	beforeEach(angular.mock.module("testing_app"));
 
-	beforeEach(inject(function(_imageService_, _$q_, _$httpBackend_){
-		imageService = _imageService_;
+	beforeEach(inject(function(_ImageService_, _$q_, _$httpBackend_){
+		ImageService = _ImageService_;
 		$q = _$q_;
 		$httpBackend = _$httpBackend_;
 	}));
 
 	it("should exist", function(){
-		expect(imageService).toBeDefined();
+		expect(ImageService).toBeDefined();
 	});
 
 	describe("findByName()", function(){
 		var result;
 		beforeEach(function(){
 			result = {};
-			spyOn(imageService, "findByName").and.callThrough();
+			spyOn(ImageService, "findByName").and.callThrough();
 		});
 
 		it("should return with a valid name", function(){
@@ -41,38 +41,39 @@ describe("imageService", function(){
 
 			$httpBackend.whenGET(API + pokemon).respond(200, $q.when(RESPONSE_SUCCESS));
 		
-			expect(imageService.findByName).not.toHaveBeenCalled();
+			expect(ImageService.findByName).not.toHaveBeenCalled();
 			expect(result).toEqual({});
 
-			imageService.findByName(pokemon)
+			ImageService.findByName(pokemon)
 				.then(function(res){
 					result = res;
 				});
 
 			$httpBackend.flush();
-			expect(imageService.findByName).toHaveBeenCalledWith(pokemon);
+			expect(ImageService.findByName).toHaveBeenCalledWith(pokemon);
 			expect(result.id).toEqual(25);
 			expect(result.name).toEqual("pikachu");
 			expect(result.sprites.front_default).toContain(".png");
 			expect(result.types[0].type.name).toEqual("electric");
 
+
 		});
 
 		it("should call a 404", function(){
-			var pokemon = "godzilla";
+			var pokemon = "nessie";
 
 			$httpBackend.whenGET(API + pokemon).respond(404, $q.reject(RESPONSE_ERROR));
 
-			expect(imageService.findByName).not.toHaveBeenCalled();
+			expect(ImageService.findByName).not.toHaveBeenCalled();
 			expect(result).toEqual({});
 			
-			imageService.findByName(pokemon).catch(function(res){
+			ImageService.findByName(pokemon).catch(function(res){
 				result = res;
 			});
 			$httpBackend.flush();
 
 
-			expect(imageService.findByName).toHaveBeenCalledWith(pokemon);
+			expect(ImageService.findByName).toHaveBeenCalledWith(pokemon);
 			expect(result).toEqual({"detail": "Not found."});
 
 		});

@@ -21,7 +21,9 @@ module.exports = function(config) {
         './public/javascripts/controllers/users.controller.js',
         './public/javascripts/controllers/users.controller.spec.js',
         './public/javascripts/services/image.service.js',
-        './public/javascripts/services/image.service.spec.js'
+        './public/javascripts/services/image.service.spec.js',
+        './public/javascripts/controllers/profile.controller.js',
+        './public/javascripts/controllers/profile.controller.spec.js'
 
     ],
     // list of files to exclude
