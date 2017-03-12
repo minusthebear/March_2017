@@ -1,5 +1,5 @@
 describe("Users Factory", function(){
-	var UsersService;
+	var UsersService, $q, $rootScope;
 
 	var userList = [
 		{ id: 1, name: "Richard Hendricks", email: "richard@piedpiper.com", phone: 4085550011, pokemon: { isPresent: true, name: "eevee"}, icon: { isPresent: false, name: null} },

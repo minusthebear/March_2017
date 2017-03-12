@@ -4,6 +4,7 @@
 	angular.module("testing_app")
 		.controller("ProfileController", function(resolvedUser, ImageService, $state){
 			var vm = this;
+			console.log(resolvedUser);
 			
 			if (resolvedUser){
 				vm.user = resolvedUser;

@@ -2,7 +2,7 @@
 	"use strict";
 
 	angular.module("testing_app")
-		.factory("UsersService", function(){
+		.factory("UsersService", function($q){
 
 			var Users = {};
 
@@ -17,9 +17,13 @@
 			};
 
 			Users.findById = function(id){
-				return userList.find(function(user){
-					return user.id === id;
-				});
+				let deferred = $q.defer();
+
+				deferred.resolve(userList.find(function(user){
+					return user.id == id;
+				}));
+
+				return deferred.promise;
 			};
 
 			return Users;
