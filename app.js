@@ -59,8 +59,10 @@ app.use(function(err, req, res, next) {
   });
 });
 
-app.listen(3000);
-
+var port = process.env.PORT || 8000;
+app.listen(port, function(){
+  console.log("Listening on port " + port);
+});
 module.exports = app;
 
 /*

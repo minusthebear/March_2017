@@ -6,6 +6,10 @@
   ])
   .config(function($urlRouterProvider, $locationProvider, $stateProvider, $qProvider) {
     $locationProvider.html5Mode(true);
+    
+    /* 
+     * Uncomment line below during unit testing to handle $q.reject
+     */
     $qProvider.errorOnUnhandledRejections(false);
 
     $urlRouterProvider
@@ -36,7 +40,9 @@
         }
       })
     	.state("404", {
-    		templateUrl: "templates/404.html"
+        url: "/404",
+    		templateUrl: "templates/404.html",
+        controller: "FourOFour as ff"
     	});
   });
 })();
