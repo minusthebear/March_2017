@@ -1,7 +1,7 @@
 "use strict";
 
 describe("testing_app app.js file", function(){
-	var $q, $state, $stateParams, $templateCache, $location, $rootScope, $injector;
+	var $q, $httpBackend, $state, $stateParams, $templateCache, $location, $rootScope, $injector;
 
 	function mockTemplate(templateRoute, template){
 		$templateCache.put(templateRoute, template || templateRoute);
@@ -24,8 +24,9 @@ describe("testing_app app.js file", function(){
 
 	beforeEach(angular.mock.module("testing_app"));
 
-	beforeEach(inject(function(_$q_, _$stateParams_, _$state_, _$templateCache_, _$location_, _$rootScope_, _$injector_){
+	beforeEach(inject(function(_$q_, _$httpBackend_, _$stateParams_, _$state_, _$templateCache_, _$location_, _$rootScope_, _$injector_){
 		$q = _$q_;
+		$httpBackend = _$httpBackend_;
 		$stateParams = _$stateParams_;
 		$state = _$state_;
 		$templateCache = _$templateCache_;
@@ -67,5 +68,24 @@ describe("testing_app app.js file", function(){
 			expect($location.url()).toEqual(badUrl);
 			expect($state.current.name).toEqual("404");
 		});
+	});
+
+	describe("users check", function(){
+		beforeEach(function(){
+			mockTemplate("templates/users.html");
+		});
+
+		it("should route to /users", function(){
+			goTo("users");
+			expect($state.current.name).toEqual("users");
+		});
+	});
+
+	describe("user/:id check", function(){
+		beforeEach(function(){
+			mockTemplate("templates/profile.html");
+		});
+
+		
 	});
 });

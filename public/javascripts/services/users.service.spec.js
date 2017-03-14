@@ -13,7 +13,7 @@ describe("Users Factory", function(){
 		var deferred = $q.defer();
 
 		deferred.resolve(userList.find(function(user){
-			return user.id == id;
+			return user.id === id;
 		}));
 
 		return deferred.promise;
