@@ -35,9 +35,7 @@
         controller: "ProfileController as pc",
         resolve: {
           resolvedUser: ["UsersService", "$q", "$stateParams", function(UsersService, $q, $stateParams){
-            console.log($stateParams.id);
             return UsersService.findById($stateParams.id).then(function(user){
-              console.log(user);
               return user;
             }).catch(function(error){
               return $q.reject(error);

@@ -64,16 +64,15 @@ describe("Users Factory", function(){
 		});
 
 		it("should equal singleUser", function(){
-			/*
-			var userID;
+			var resolvedValue;
 
-			UsersService.findById(2);
-			deferred.resolve(userList.find(function(user){
-				return user.id == 2;
-			}));
-			expect(UsersService.findById).toHaveBeenCalled();
-			expect(deferred.promise).toEqual(singleUser);
-			*/
+			mockedDeferred.then(function(value){
+				resolvedValue = value;
+			});
+
+			$rootScope.$apply();
+
+			expect(resolvedValue).toEqual(singleUser);
 		});
 	});
 });
