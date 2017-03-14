@@ -17,7 +17,7 @@
 			};
 
 			Users.findById = function(id){
-				let deferred = $q.defer();
+				var deferred = $q.defer();
 
 				deferred.resolve(userList.find(function(user){
 					return user.id == id;
