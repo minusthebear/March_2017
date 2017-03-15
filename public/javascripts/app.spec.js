@@ -1,7 +1,9 @@
 "use strict";
 
 describe("testing_app app.js file", function(){
-	var $q, $httpBackend, $state, $stateParams, $templateCache, $location, $rootScope, $injector;
+	var $q, $httpBackend, $state, $stateParams, $templateCache, $location, $rootScope, $injector, mockedDeferred;
+
+	var singleUser = { id: 2, name: "Erlich Bachman", email: "erlich@aviato.com", phone: 4155552233, pokemon: { isPresent: true, name: "celebi"}, icon: { isPresent: false, name: null} };
 
 	function mockTemplate(templateRoute, template){
 		$templateCache.put(templateRoute, template || templateRoute);
@@ -10,6 +12,7 @@ describe("testing_app app.js file", function(){
 	function goFrom(url){
 		return {
 			toState: function(state, params){
+				console.log("STATE = " + state + ", PARAMS = " + params);
 				$location.replace().url(url);
 				$state.go(state, params);
 				$rootScope.$digest();
@@ -20,6 +23,16 @@ describe("testing_app app.js file", function(){
 	function goTo(url){
 		$location.url(url);
 		$rootScope.$digest();
+	}
+
+	function mockQ(id){
+		var deferred = $q.defer();
+
+		deferred.resolve(userList.find(function(user){
+			return user.id === id;
+		}));
+
+		return deferred.promise;
 	}
 
 	beforeEach(angular.mock.module("testing_app"));
@@ -85,7 +98,17 @@ describe("testing_app app.js file", function(){
 		beforeEach(function(){
 			mockTemplate("templates/profile.html");
 		});
+/*
+		it("should resolve promise", function(){
+			mockedDeferred = mockQ(2);
 
-		
+			$rootScope.$apply();
+
+			expect()
+		});
+*/		
+		it("route to the correct user id", function(){
+			it("should read stateParams correctly")
+		});
 	});
 });
