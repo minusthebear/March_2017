@@ -1,5 +1,5 @@
 describe("profile.controller", function(){
-	var $controller, ImageService, $q, $httpBackend, $state,
+	var $controller, ImageService, $q, $httpBackend, $state, resolvedUser,
 		API = "http://pokeapi.co/api/v2/pokemon/";
 
 	var RESPONSE_SUCCESS = {

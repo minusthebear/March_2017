@@ -104,15 +104,13 @@ describe("testing_app app.js file", function(){
 			expect(UsersService.findById).toBeDefined();
 		});
 
-		it("route to the correct state", function(){
-			
+		it("route to the correct state", function(){			
 			expect($location.url()).toEqual("/user/2");
 			expect($state.current.name).toEqual("profile");
 		});
 
 		it("should return correct data on calling the resolve block", function(){
 			let resolve = $injector.invoke($state.current.resolve.resolvedUser);
-			console.log(resolve);
 			resolve.then(function(data){
 				expect(data).toEqual(singleUser);
 			});
