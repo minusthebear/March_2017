@@ -99,23 +99,24 @@ describe("testing_app app.js file", function(){
 				UsersService = $injector.get("UsersService");
 			});
 		});
-/*
-		beforeEach(inject(function(_UsersService_){
-			UsersService = _UsersService_;
-		}));
-*/	
+
+		it("should check if UsersService was injected",function(){
+			expect(UsersService.findById).toBeDefined();
+		});
+
 		it("route to the correct state", function(){
 			
 			expect($location.url()).toEqual("/user/2");
 			expect($state.current.name).toEqual("profile");
 		});
 
-		it("should resolve resolvedUser", function(){
-			//spyOn()
-			console.log(UsersService);
-			expect($injector.invoke($state.current.resolve.resolvedUser)).toBe("findById");
+		it("should return correct data on calling the resolve block", function(){
+			let resolve = $injector.invoke($state.current.resolve.resolvedUser);
+			console.log(resolve);
+			resolve.then(function(data){
+				expect(data).toEqual(singleUser);
+			});
+			$rootScope.$digest();
 		});
-
-
 	});
 });
