@@ -1,23 +1,17 @@
 "use strict";
 
 describe("testing_app app.js file", function(){
-	var $q, $httpBackend, $state, $stateParams, $templateCache, $location, $rootScope, $injector, mockedDeferred;
+	let $q, $httpBackend, $state, $stateParams, $templateCache, $location, $rootScope, $injector, mockedDeferred, mockedService, UsersService;
 
-	var singleUser = { id: 2, name: "Erlich Bachman", email: "erlich@aviato.com", phone: 4155552233, pokemon: { isPresent: true, name: "celebi"}, icon: { isPresent: false, name: null} };
+	let singleUser = { id: 2, name: "Erlich Bachman", email: "erlich@aviato.com", phone: 4155552233, pokemon: { isPresent: true, name: "celebi"}, icon: { isPresent: false, name: null} };
 
 	function mockTemplate(templateRoute, template){
 		$templateCache.put(templateRoute, template || templateRoute);
 	}
 
-	function goFrom(url){
-		return {
-			toState: function(state, params){
-				console.log("STATE = " + state + ", PARAMS = " + params);
-				$location.replace().url(url);
-				$state.go(state, params);
-				$rootScope.$digest();
-			}
-		}
+	function goToStateAndParam(state, params){
+		$state.go(state, params);
+		$rootScope.$digest();
 	}
 
 	function goTo(url){
@@ -70,7 +64,7 @@ describe("testing_app app.js file", function(){
 	});
 
 	describe("404 check", function(){
-		var badUrl = "/fdsfsdfdfds";
+		let badUrl = "/fdsfsdfdfds";
 		
 		beforeEach(function(){
 			mockTemplate("templates/404.html");
@@ -95,20 +89,33 @@ describe("testing_app app.js file", function(){
 	});
 
 	describe("user/:id check", function(){
+		let state = "profile";
+
 		beforeEach(function(){
 			mockTemplate("templates/profile.html");
+			goToStateAndParam(state, {id: 2});
+
+			inject(function($injector){
+				UsersService = $injector.get("UsersService");
+			});
 		});
 /*
-		it("should resolve promise", function(){
-			mockedDeferred = mockQ(2);
-
-			$rootScope.$apply();
-
-			expect()
+		beforeEach(inject(function(_UsersService_){
+			UsersService = _UsersService_;
+		}));
+*/	
+		it("route to the correct state", function(){
+			
+			expect($location.url()).toEqual("/user/2");
+			expect($state.current.name).toEqual("profile");
 		});
-*/		
-		it("route to the correct user id", function(){
-			it("should read stateParams correctly")
+
+		it("should resolve resolvedUser", function(){
+			//spyOn()
+			console.log(UsersService);
+			expect($injector.invoke($state.current.resolve.resolvedUser)).toBe("findById");
 		});
+
+
 	});
 });
