@@ -1,3 +1,9 @@
+/*
+When not sick, do this:
+
+grunt-html2js is very easy to configure and to use. It needs the source path(s) of the html file(s) and a destination path where the resultant script has to be written. The following is the configuration used in the sample code:
+*/
+
 "use strict";
 
 describe("testing Sample Directive", function(){
@@ -108,6 +114,42 @@ describe("testing Sample Directive", function(){
 		});
 	});
 
+	describe("Sample Directive Five", function(){
+
+		it("should fail if ngModel is not specified", function(){
+			expect(function(){
+				getCompiledElementTwo('<input type="text" sample-directive-five />');
+			}).toThrow();
+		});
+
+		it("should work if ng-model is specified and not wrapped in form", function(){
+			expect(function(){
+				getCompiledElementTwo('<div><input type="text" ng-model="name" sample-directive-five /></div>');
+			}).not.toThrow();
+		});
+
+		it("should set form dirty", function(){
+			let directiveElem = getCompiledElementTwo('<form name="sampleForm"><input type="text" ng-model="name" sample-directive-five /></form>');
+			expect($scope.sampleForm.$dirty).toEqual(true);
+		});
+
+	});
+
+	describe("Sample Directive Six", function(){
+		it("should have replaced directive element", function(){
+			let compiledDirective = getCompiledElementTwo('<div><sample-directive-six></sample-directive-six></div>');
+
+			expect(compiledDirective.find("sample-directive-six").length).toEqual(0);
+		});
+	});
+/*
+	describe("Sample Directive Seven", function(){
+		it("should have an ng-transclude directive", function(){
+			let transcludeElem = directiveElem.find("div[ng-transclude]");
+			expect(transcludeElem.length).toBe(1);
+		});
+	});
+*/
 
 
 	
