@@ -1,5 +1,8 @@
 "use strict";
 
+// Work on testing exception handling!!!
+
+
 describe("testing_app app.js file", function(){
 	let $q, $httpBackend, $state, $stateParams, $templateCache, $location, $rootScope, $injector, mockedDeferred, mockedService, UsersService;
 
@@ -116,5 +119,6 @@ describe("testing_app app.js file", function(){
 			});
 			$rootScope.$digest();
 		});
+
 	});
 });

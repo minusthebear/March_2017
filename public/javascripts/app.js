@@ -9,6 +9,7 @@
     
     /* 
      * Uncomment line below during unit testing to handle $q.reject
+     * Comment line below during runtime
      */
     $qProvider.errorOnUnhandledRejections(false);
 

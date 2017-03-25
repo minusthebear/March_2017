@@ -25,7 +25,9 @@ module.exports = function(config) {
         './public/javascripts/controllers/profile.controller.js',
         './public/javascripts/controllers/profile.controller.spec.js',
         './public/javascripts/controllers/fourofour.js',
-        './public/javascripts/controllers/fourofour.spec.js'
+        './public/javascripts/controllers/fourofour.spec.js',
+        './public/javascripts/directives/sample_directive.js',
+        './public/javascripts/directives/sample_directive.spec.js'
     ],
     // list of files to exclude
     exclude: [
