@@ -25,5 +25,14 @@
 				});
 			}
 		};
+	})
+	.directive("sampleDirectiveFour", function(){
+		return {
+			scope: {
+				config: "=",
+				notify: "@",
+				onChange: "&"
+			}
+		}
 	});
 })();
